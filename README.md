@@ -4,7 +4,7 @@
 
 Switchboard is a self-hosted web app that routes a single chat prompt to multiple AI providers in parallel — OpenAI, Anthropic, DeepSeek, Google Gemini, Groq, NVIDIA NIM, OpenRouter, Mistral, xAI, Together AI, and Cerebras — and streams the responses back side-by-side.
 
-![Switchboard screenshot](static/assets/screenshot.png)
+![Switchboard screenshot](static/assets/image.png)
 
 ## Features
 
