@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Switchboard — Compare AI models side-by-side</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body class="home-body">
+
+<nav class="site-nav">
+  <a href="/home" class="nav-brand">
+    <svg width="22" height="22" viewBox="0 0 36 36" fill="none">
+      <circle cx="10" cy="22" r="5" fill="#D4A017" stroke="#D4A017" stroke-width="1"/>
+      <circle cx="10" cy="22" r="9" fill="none" stroke="#D4A017" stroke-width="1.5" opacity=".4"/>
+      <circle cx="18" cy="18" r="4" fill="#3D9970" stroke="#3D9970" stroke-width="1"/>
+      <circle cx="18" cy="18" r="8" fill="none" stroke="#3D9970" stroke-width="1.5" opacity=".4"/>
+      <circle cx="28" cy="22" r="3" fill="#6b7280"/>
+      <line x1="10" y1="22" x2="18" y2="18" stroke="#D4A017" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="18" y1="18" x2="28" y2="22" stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    SWITCHBOARD
+  </a>
+  <div class="nav-links">
+    <a href="/home" class="nav-link active">Home</a>
+    <a href="/app" class="nav-link">App</a>
+    <a href="/about" class="nav-link">About</a>
+  </div>
+  <a href="/app" class="btn-nav-cta">Open app →</a>
+</nav>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">Multi-model chat, wired together</div>
+    <h1 class="hero-headline">One prompt.<br>Every model<br><em>answering at once.</em></h1>
+    <p class="hero-sub">Switchboard routes your question to GPT, Claude, Gemini, Llama, and more in parallel — so you can see exactly where each model shines, and where it doesn't.</p>
+    <div class="hero-actions">
+      <a href="/app" class="btn-primary">Start comparing →</a>
+      <a href="/about" class="btn-ghost-hero">How it works</a>
+    </div>
+    <div class="hero-hint">No account needed · Your API keys stay in your browser</div>
+
+    <!-- Live demo mockup -->
+    <div class="hero-demo">
+      <div class="demo-bar">
+        <span class="demo-dot r"></span><span class="demo-dot y"></span><span class="demo-dot g"></span>
+        <span class="demo-title">Switchboard</span>
+      </div>
+      <div class="demo-prompt">"Explain quantum entanglement in one sentence."</div>
+      <div class="demo-cards">
+        <div class="demo-card" style="--c:#74AA9C">
+          <div class="demo-card-head"><span class="demo-led ok"></span>GPT-4o</div>
+          <div class="demo-card-body">When two particles become entangled, measuring one instantly determines the state of the other — regardless of the distance between them.</div>
+          <div class="demo-card-ms">842ms</div>
+        </div>
+        <div class="demo-card" style="--c:#D97757">
+          <div class="demo-card-head"><span class="demo-led ok"></span>Claude Sonnet</div>
+          <div class="demo-card-body">Entangled particles share a quantum state such that observing one collapses a shared superposition, instantly determining the other's state no matter how far apart.</div>
+          <div class="demo-card-ms">1 204ms</div>
+        </div>
+        <div class="demo-card" style="--c:#4285F4">
+          <div class="demo-card-head"><span class="demo-led ok"></span>Gemini Flash</div>
+          <div class="demo-card-body">Quantum entanglement links two particles so that measuring one instantaneously affects the other, even across vast distances.</div>
+          <div class="demo-card-ms">611ms</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Parallel, not sequential</h3>
+        <p>All models receive your prompt at the same moment. Responses stream in as each one finishes — no waiting for slower models to block faster ones.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔑</div>
+        <h3>Keys stay in your browser</h3>
+        <p>API keys are stored only in <code>localStorage</code> and sent directly to each provider. The Switchboard server never sees or logs them.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧵</div>
+        <h3>Per-model conversation threads</h3>
+        <p>Every line keeps its own history. Switch a model mid-conversation, or mute a line without losing context — then flip it back on and continue.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎙️</div>
+        <h3>Voice input</h3>
+        <p>Click the mic, speak your prompt, review and confirm. Works wherever your browser supports the Web Speech API.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>Copy in one click</h3>
+        <p>Copy any response as plain text or Markdown — with the model name embedded — ready to paste anywhere.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💾</div>
+        <h3>Session history</h3>
+        <p>Conversations are auto-saved locally. Resume any past session, and the board picks up exactly where you left off.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Providers -->
+  <section class="providers-section">
+    <h2 class="section-title">Providers supported</h2>
+    <div class="provider-chips">
+      <span class="chip" style="--c:#74AA9C">OpenAI</span>
+      <span class="chip" style="--c:#D97757">Anthropic</span>
+      <span class="chip" style="--c:#4D6BFE">DeepSeek</span>
+      <span class="chip" style="--c:#4285F4">Google Gemini</span>
+      <span class="chip" style="--c:#F55036">Groq</span>
+      <span class="chip" style="--c:#76B900">NVIDIA NIM</span>
+      <span class="chip" style="--c:#8B5CF6">OpenRouter</span>
+      <span class="chip" style="--c:#FA520F">Mistral</span>
+      <span class="chip" style="--c:#E5E5E5">xAI (Grok)</span>
+      <span class="chip" style="--c:#0F6FFF">Together AI</span>
+      <span class="chip" style="--c:#F15A29">Cerebras</span>
+    </div>
+    <p class="providers-note">Any provider that speaks the OpenAI chat-completions dialect can be added in minutes.</p>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Ready to hear them all?</h2>
+    <a href="/app" class="btn-primary btn-large">Open Switchboard →</a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-brand">SWITCHBOARD</div>
+  <div class="footer-links">
+    <a href="/home">Home</a>
+    <a href="/app">App</a>
+    <a href="/about">About</a>
+  </div>
+  <div class="footer-copy">Open-source · MIT License</div>
+</footer>
+
+</body>
+</html>

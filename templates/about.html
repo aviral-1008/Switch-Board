@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Avi — Switchboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body class="home-body">
+
+<nav class="site-nav">
+  <a href="/home" class="nav-brand">
+    <svg width="22" height="22" viewBox="0 0 36 36" fill="none">
+      <circle cx="10" cy="22" r="5" fill="#D4A017" stroke="#D4A017" stroke-width="1"/>
+      <circle cx="10" cy="22" r="9" fill="none" stroke="#D4A017" stroke-width="1.5" opacity=".4"/>
+      <circle cx="18" cy="18" r="4" fill="#3D9970" stroke="#3D9970" stroke-width="1"/>
+      <circle cx="18" cy="18" r="8" fill="none" stroke="#3D9970" stroke-width="1.5" opacity=".4"/>
+      <circle cx="28" cy="22" r="3" fill="#6b7280"/>
+      <line x1="10" y1="22" x2="18" y2="18" stroke="#D4A017" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="18" y1="18" x2="28" y2="22" stroke="#6b7280" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    SWITCHBOARD
+  </a>
+  <div class="nav-links">
+    <a href="/home" class="nav-link">Home</a>
+    <a href="/app" class="nav-link">App</a>
+    <a href="/about" class="nav-link active">About</a>
+  </div>
+  <a href="/app" class="btn-nav-cta">Open app →</a>
+</nav>
+
+<main class="about-main">
+
+  <header class="about-hero">
+    <p class="about-eyebrow">The story behind the switchboard</p>
+    <h1>Why I built this</h1>
+    <p class="about-intro">I kept switching browser tabs to compare GPT, Claude, Gemini, and DeepSeek on the same question. That got old fast. So I built Switchboard — one input, every model, responses side by side.</p>
+  </header>
+
+  <section class="about-section">
+    <h2>How it works</h2>
+    <div class="about-steps">
+      <div class="about-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Add lines</h3>
+          <p>Each "line" is a model slot. Choose a provider, type the exact model ID from the provider's docs, and give it a nickname if you like.</p>
+        </div>
+      </div>
+      <div class="about-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Set your API keys</h3>
+          <p>Keys go into your browser's <code>localStorage</code> — they never touch this server. Each request carries the key directly from your browser to the provider's API.</p>
+        </div>
+      </div>
+      <div class="about-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Type and send</h3>
+          <p>Your prompt is broadcast to all active lines in parallel. Responses stream back as each model finishes — fastest first, no blocking.</p>
+        </div>
+      </div>
+      <div class="about-step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Compare and continue</h3>
+          <p>Each line keeps its own conversation thread. Flip lines on or off anytime — mute a model mid-chat without losing your place.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2>Privacy & security</h2>
+    <div class="about-security">
+      <div class="security-item">
+        <span class="security-icon">🔐</span>
+        <div>
+          <strong>API keys never leave your browser</strong>
+          <p>Keys are stored only in <code>localStorage</code> on your device. The backend receives them per-request only to forward to the provider — they are never logged or stored server-side.</p>
+        </div>
+      </div>
+      <div class="security-item">
+        <span class="security-icon">🚫</span>
+        <div>
+          <strong>No accounts, no tracking</strong>
+          <p>Switchboard has no user accounts, no analytics, and no database of your conversations. Everything lives in your browser's local storage.</p>
+        </div>
+      </div>
+      <div class="security-item">
+        <span class="security-icon">🛡️</span>
+        <div>
+          <strong>Strict security headers</strong>
+          <p>Every response includes <code>X-Content-Type-Options</code>, <code>X-Frame-Options: DENY</code>, <code>Referrer-Policy</code>, and a tight Content-Security-Policy. No third-party scripts load at runtime.</p>
+        </div>
+      </div>
+      <div class="security-item">
+        <span class="security-icon">✅</span>
+        <div>
+          <strong>Input validation</strong>
+          <p>Prompts are capped at 32 000 characters, model IDs are sanitised by regex, and history messages are trimmed and validated before any outgoing request is made.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2>Tech stack</h2>
+    <div class="tech-grid">
+      <div class="tech-item"><span class="tech-label">Backend</span><span class="tech-val">Python · Flask</span></div>
+      <div class="tech-item"><span class="tech-label">Streaming</span><span class="tech-val">Server-Sent Events</span></div>
+      <div class="tech-item"><span class="tech-label">Concurrency</span><span class="tech-val">ThreadPoolExecutor</span></div>
+      <div class="tech-item"><span class="tech-label">Frontend</span><span class="tech-val">Vanilla JS · no frameworks</span></div>
+      <div class="tech-item"><span class="tech-label">Storage</span><span class="tech-val">Browser localStorage</span></div>
+      <div class="tech-item"><span class="tech-label">Voice</span><span class="tech-val">Web Speech API</span></div>
+    </div>
+  </section>
+
+  <section class="about-section about-me-section">
+    <h2>About Avi</h2>
+    <div class="about-me-card">
+      <div class="about-me-avatar">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="32" fill="#1a1a1f"/>
+          <circle cx="32" cy="26" r="12" fill="#D4A017" opacity=".9"/>
+          <ellipse cx="32" cy="56" rx="20" ry="14" fill="#D4A017" opacity=".7"/>
+        </svg>
+      </div>
+      <div class="about-me-text">
+        <h3 class="about-me-name">Avi</h3>
+        <p class="about-me-tagline">Red Teamer · Cybersecurity Enthusiast · Web Developer</p>
+        <p>Hey, I'm Avi 👋 — by day I break things on purpose. As a red teamer and cybersecurity enthusiast, I spend my time thinking like an attacker: probing systems, chasing misconfigurations, and figuring out how something could fail before someone else does. That mindset — question everything, trust nothing by default, verify every input — is exactly why Switchboard locks down API keys, sanitises every request, and never logs a single prompt server-side.</p>
+        <p>But I've got a builder's heart too. Web dev is where I unwind — turning ideas into real, working interfaces instead of just poking holes in other people's. Switchboard is that side of me: I got tired of tab-switching between GPT, Claude, Gemini, and DeepSeek just to compare answers, so I built a tool that throws the same prompt at all of them at once and streams the results back side by side.</p>
+        <p>Part hacker, part developer — Switchboard sits right at that intersection. If you find a bug (or break it on purpose, I won't judge), want a feature, or just want to talk security or code, hit me up below.</p>
+        <div class="about-me-links">
+          <a href="https://github.com/aviral-1008" class="social-link" id="aboutGithub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.089-.745.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.807 1.305 3.49.997.108-.776.417-1.305.76-1.605-2.665-.305-5.466-1.334-5.466-5.93 0-1.31.467-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23a11.5 11.5 0 0 1 3-.405c1.02.005 2.045.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.135.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            GitHub
+          </a>
+          <a href="https://x.com/avii_v24" class="social-link" id="aboutX">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            X / Twitter
+          </a>
+          <a href="https://www.linkedin.com/in/avii24/" class="social-link" id="aboutLinkedin">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM3.558 20.452h3.56V9h-3.56v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://instagram.com/hacktivist.aviral" class="social-link" id="aboutInstagram" title="Instagram" target="_blank" rel="noopener noreferrer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            Instagram
+      </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-brand">SWITCHBOARD</div>
+  <div class="footer-links">
+    <a href="/home">Home</a>
+    <a href="/app">App</a>
+    <a href="/about">About</a>
+  </div>
+  <div class="footer-copy">Open-source · MIT License</div>
+</footer>
+
+</body>
+</html>
