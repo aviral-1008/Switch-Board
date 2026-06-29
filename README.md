@@ -1,3 +1,4 @@
+![main_logo](static/assts/image2.png)
 # Switchboard
 
 **One prompt. Every model. Answering at once.**
